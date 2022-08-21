@@ -21,7 +21,27 @@ GLFWwindow* setup()
     return window;
 }
 
+GLuint getShaderProgram(char* vertexShaderSource, char* fragmentShaderSource)
+{
+    GLuint program = glCreateProgram();
+    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+
+    glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
+    glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
+
+    glCompileShader(vertexShader);
+    glCompileShader(fragmentShader);
+
+    glAttachShader(program, vertexShader);
+    glAttachShader(program, fragmentShader);
+    glLinkProgram(program);
+
+    return program;
+}
+
 void terminate()
 {
     glfwTerminate();
 }
+
