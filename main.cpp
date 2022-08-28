@@ -6,7 +6,7 @@
 #include <GLFW/glfw3.h>
 
 // utilities for creating windows etc.
-#include "util.h"
+#include "util.hpp"
 
 
 int main(int argc, char** argv)
